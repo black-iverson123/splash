@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+
+{% block app_content %}
+
+<div class='container'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <div class='col-md-4'>
+        <center>
+        <h1>{{ ('Register') }}</h1>
+        </center>
+        <form action="/register" method="post" enctype="multipart/form-data" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                <p>{{ form.username.label}}</p>
+                <p> {{ form.username(class_="form-control", placeholder="username")}}</p>
+                {% for error in  form.username.errors %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">{{ error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="close"></button>
+                </div>
+                {% endfor %}
+            </p>
+            <p>
+                <p>{{ form.email.label}}</p>
+                <p> {{ form.email(class_="form-control", placeholder="Enter a valid email!")}}</p>
+                {% for error in  form.email.errors %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">{{ error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="close"></button>
+                </div>
+                {% endfor %}
+            </p>
+            <p>
+                <p>{{ form.password.label}}</p>
+                <p> {{ form.password(class_="form-control", placeholder="Enter password")}}</p>
+                {% for error in  form.password.errors %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">{{ error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="close"></button>
+                </div>
+                {% endfor %}
+            </p>
+            <p>
+                <p>{{ form.password2.label}}</p>
+                <p> {{ form.password2(class_="form-control", placeholder="Re-enter password")}}</p>
+                {% for error in  form.password2.errors %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">{{ error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="close"></button>
+                </div>
+                {% endfor %}
+            </p>        
+            <p>{{ form.submit(class="btn btn-primary")}}</p>
+        </form>
+    </div>
+</div>
+{% endblock %}

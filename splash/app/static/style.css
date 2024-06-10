@@ -1,0 +1,356 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000; 
+}
+
+body {
+  padding-top: 60px; 
+  background-color: #AEDFF7;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+.info {
+  position: absolute;
+  top: 70px; 
+  width: 100%;
+}
+
+footer {
+  bottom: 0;
+  width: 100%;
+  margin-top: auto;
+}
+.navbar, footer {
+  background-color: #FFB482;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; 
+  flex-grow: 1;
+}
+
+.col-md-4 {
+  margin: 0 auto; 
+  border: 1px solid #ccc; 
+  padding: 20px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); 
+  border-radius: 10px; 
+  background-color: white; 
+}
+
+.profile {
+  width: 80%;
+  margin: auto;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.profile-header, .profile-body, .profile-footer {
+  margin-bottom: 20px;
+  width: 80%; 
+  text-align: center;
+}
+
+.avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+}
+
+.name {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.last-seen {
+  font-size: 14px;
+  color: #6c757d;
+}
+
+.bio, .email, .communities {
+  margin-top: 20px;
+}
+
+.bio p, .email, .community {
+  font-size: 16px;
+}
+#search-btn {
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #FFB482;
+  background-color: #007bff;
+}
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+}
+
+.btn-primary {
+  background-color: #007bff;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+}
+
+.reset-password-form {
+  width: 80%;
+  margin: auto;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  background-color: #007bff;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.error-page h1 {
+  font-size: 6em;
+  color: #007bff;
+}
+
+.error-page h2 {
+  font-size: 3em;
+  color: #333;
+}
+
+.error-page p {
+  font-size: 1.5em;
+  color: #666;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  background-color: #007bff;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+
+.confirmation-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #f8f9fa;
+  padding: 20px;
+}
+
+.confirmation-page h1 {
+  font-size: 2em;
+  color: #007bff;
+}
+
+.confirmation-page p {
+  font-size: 1.2em;
+  color: #333;
+}
+
+.confirmation-page a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.confirmation-page a:hover {
+  text-decoration: underline;
+}
+
+.profile-container {
+  width: 80%;
+  margin: auto;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header, .profile-body, .profile-footer {
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+}
+
+h1, h2, h3 {
+  color: #333;
+}
+
+.bio, .email, .communities, .created, .joined {
+  margin-top: 20px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  background-color: #007bff;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+}
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin: auto;
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+}
+
+.about-container h1, .about-container h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.about-container p, .about-container li {
+  color: #666;
+  margin-bottom: 10px;
+  text-align: justify;
+}
+
+.about-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.about-container li::before {
+  content: "• ";
+  color: #007bff;
+}
+
+/* Add some hover effects for interactive elements */
+.about-container a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.about-container a:hover {
+  text-decoration: underline;
+}
+
+
+
+
+@media screen and (max-width: 768px) {
+  .navbar {
+    position: static;
+    width: 100%;
+  }
+
+  body {
+    padding-top: 0;
+  }
+
+  .info {
+    position: static;
+    top: 0;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .col-md-4 {
+    width: 100%;
+    margin: 0;
+  }
+
+  .profile {
+    width: 100%;
+  }
+
+  .profile-header, .profile-body, .profile-footer {
+    width: 100%;
+  }
+  .about-container {
+    width: 100%;
+    padding: 10px;
+  }
+}
+

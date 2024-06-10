@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block app_content %}
+
+<div class='container'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <div class='col-md-4'>
+        <center>
+            <h1>{{ ('Login') }}</h1>
+        </center>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">{{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="close"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form action="" method="post" novalidate>
+            {{ form.csrf_token }}
+                <p>{{ form.username.label}}</p>
+                <p> {{ form.username(class_="form-control", placeholder="Email or Username")}}</p>
+                {% for error in  form.username.errors %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">{{ error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="close"></button>
+                </div>
+                {% endfor %}
+                <p>{{ form.password.label}}</P>
+                <p> {{ form.password(class_="form-control", placeholder="Enter your password")}}</p>
+                {% for error in  form.password.errors %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">{{ error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="close"></button>
+                </div>
+                {% endfor %}
+                <p> {{ form.remember_me() }} {{ form.remember_me.label }}
+                <p>{{ form.submit(class="btn btn-primary")}}</p>
+                <p>
+                    Forgot Your Password?
+                    <a href="{{ url_for('password_reset') }}">Click to Reset</a>
+                </p>
+        </form>
+    </div>
+</div>
+{% endblock %}

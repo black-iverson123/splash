@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+{% block app_content %}
+<div class="container">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+    <div class='col-md-4'>
+        <form action="" method="post" novalidate>
+            <h1> Edit profile </h1>
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.username.label}}
+                {{ form.username(class="form-control", placeholder="Enter new username of choice") }}
+                {% for error in  form.username.errors %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">{{ error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="close"></button>
+                </div>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.about_me.label(class="form-label") }}<br>
+                {{ form.about_me(cols=50, rows=4, class="form-control") }}<br>
+            </p>
+  
+            <p>{{ form.submit(class="btn btn-primary")}}</p>
+        </form>
+
+        
+    </div>
+</div>
+{% endblock %}

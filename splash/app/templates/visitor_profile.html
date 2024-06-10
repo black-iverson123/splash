@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='dash.css') }}">
+<div class="dashboard">
+    <div class="card">
+        <div class="sidebar">
+            <h2>{{ user.username }}</h2>
+            <img class="avatar" src="{{ user.avatar(160) }}" alt="Profile Picture">
+            {% if user.last_seen %}
+                <div class="last-seen">Last seen: <em>{{ moment(user.last_seen).fromNow() }}</em></div>
+            {% endif %}
+            <div class="bio">
+                {% if user.about_me %}
+                    <p>{{ user.about_me }}</p>
+                {% endif %}
+            </div>
+            <div class="email">Email: {{ user.email }}</div>
+        </div>
+        <div class="main">
+            <h2>Communities</h2>
+            <div class="communities">
+                {% for group in user_group %}
+                    <div class="community">{{ group.name }}</div>
+                {% endfor %}
+            </div>
+            <h2>Joined Communities</h2>
+            <div class="communities">
+                {% for group in joined %}
+                    <div class="community">{{ group.name }}</div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="trends">
+            <a class="btn btn-primary" href="{{ url_for('dashboard') }}">Home</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

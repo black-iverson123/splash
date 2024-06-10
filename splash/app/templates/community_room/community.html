@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='chat.css') }}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" 
+integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" 
+crossorigin="anonymous"></script>
+
+<div class="chat-container">
+  <div class="chat-header">
+    <h2>Welcome to {{ group_name }}</h2>
+    <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Leave {{ group_name }}</a>
+  </div>
+  <div class="chat-messages" id="chat-messages">
+  </div>
+  <div class="chat-inputs">
+    <textarea
+      rows="3"
+      placeholder="Send a message...."
+      name="message"
+      id="message"
+    ></textarea>
+    <button type="button" name="send" id="send-btn" onclick="sendMessage()">
+      Send
+    </button>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+  var socketio = io();
+
+
+  const user_send = document.getElementById("chat-messages");
+
+
+
+  const createMessage = (name, msg) => {
+    const content = `
+    <div class="text">
+        <span  class="paragraph" style="color: {{ colors }}">
+            <strong><em>${name}</em><a/></strong>: ${msg}
+        </span>
+        <span class="muted">
+            ${new Date().toLocaleString()}
+        </span>
+    </div>
+    `;
+    user_send.innerHTML += content;
+  };
+
+  socketio.on("message", (data) => {
+    createMessage(data.name, data.message);
+  });
+
+  const sendMessage = () => {
+    const message = document.getElementById("message");
+    if (message.value == "") return;
+    socketio.emit("message", { data: message.value });
+    message.value = "";
+  };
+</script>
+{% for msg in messages %}
+    <script type="text/javascript">
+      createMessage("{{msg.name}}", "{{msg.message}}");
+    </script>
+{% endfor %}
+
+{% endblock %}

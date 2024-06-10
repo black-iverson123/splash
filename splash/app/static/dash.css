@@ -1,0 +1,43 @@
+.dashboard {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    width: 80%;
+    margin-top: 6vh;
+}
+
+.card {
+    display: flex;
+    flex-direction: row; 
+    justify-content: space-between;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.sidebar, .main, .trends {
+    width: 30%;
+    overflow-y: scroll;
+    height: 70vh;
+    overflow: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard {
+      flex-direction: column; 
+      width: 100%;
+      margin-top: 2vh;
+    }
+  
+    .card {
+      flex-direction: column; 
+      width: 100%;
+      padding: 10px;
+    }
+  
+    .sidebar, .main, .trends {
+      width: 100%;
+      height: auto;
+    }
+  }
+  

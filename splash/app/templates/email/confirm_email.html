@@ -1,0 +1,20 @@
+<html>
+<p> Hi There {{ username | capitalize }},
+
+    Welcome to Splash!, Kindly click link below to confirm your email and
+    activate your account:
+</p>
+
+<p>
+    <a href="{{ url_for('confirm_email', token=token, _external=True)}}">
+        Click here to confirm your email!!
+    </a>
+</p>
+<p>
+    <i>Please Note: This link is only valid for 1 hour!!!</i>
+</P>
+
+<br/>
+
+<p>Cheers!</p>
+</html>

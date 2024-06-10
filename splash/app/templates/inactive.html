@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+    <div class="confirmation-page">
+        <h1>Welcome, {{ username }}!</h1>
+        <p>You have not confirmed your account yet. Please check your email (including the spam folder) for a confirmation link.</p>
+        <p>If you didn't receive the email, you can <a href="{{ url_for('resend_confirmation') }}">resend the confirmation email</a>.</p>
+    </div>
+{% endblock %}

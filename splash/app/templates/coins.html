@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='coins.css') }}">
+<div class='coins'>
+    <div id="coin-data">
+        <div id="coin-data-body">
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            function fetchData() {
+                $.ajax({
+                    url: '/coin-data',
+                    type: 'GET',
+                    success: function(coins_data) {
+                        var coinRows = '';
+                        coins_data.forEach(function(coin, index) {
+                            coinRows += `
+                                <div class="coin-card">
+                                    <h3>${coin.name} <em>${coin.symbol}</em></h3>
+                                    <p>Price: $${coin.price}</p>
+                                    <p>Circulating Supply: ${coin.circulating_supply} ${coin.symbol}</p>
+                                    <p>Volume (24h): $${coin.volume_24h}</p>
+                                    <p>Change (1h): <span style="color: ${coin.percent_change_in_1h < 0 ? 'red' :  'green'};">${coin.percent_change_in_1h < 0 ? '▼' : '▲'} ${coin.percent_change_in_1h}%</span></p>
+                                    <p>Change (24h): <span style="color: ${coin.percent_change_in_24h < 0 ? 'red' : 'green'};">${coin.percent_change_in_1h < 0 ? '▼' : '▲'} ${coin.percent_change_in_24h}%</span></p>
+                                    <p>Change (7d): <span style="color: ${coin.percent_change_in_7d < 0 ? 'red' : 'green'};">${coin.percent_change_in_1h < 0 ? '▼' : '▲'} ${coin.percent_change_in_7d}%</span></p>
+                                </div>
+                            `;
+                        });
+                        $('#coin-data-body').html(coinRows);
+                    },
+                    error: function(error) {
+                        console.log('Error fetching data:', error);
+                    }
+                });
+            }
+           fetchData();
+           setInterval(fetchData, 5000);
+        };
+    </script>
+</div>
+
+{% endblock %}

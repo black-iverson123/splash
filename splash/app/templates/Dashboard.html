@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='dash.css') }}">
+<div class="dashboard">
+    <div class="card">
+        <div class="sidebar">
+            <h2>My Communities</h2>
+            <a href="{{ url_for('create_community') }}" class="btn btn-primary">Create a new community</a>
+            <h4>Created</h4>
+            <div class="communities-created">
+                {% for name in my_communities %}
+                    <div class="community">
+                        <p>{{ name.name }} <em>{{ name.about }}</em></p>
+                        <a href="{{ url_for('community_chat', community=name.name) }}" class="btn btn-success">Visit</a>
+                    </div>
+                {% endfor %}
+            </div>
+            <h4>Communities Joined</h4>
+            <div class="communities-joined">
+                {% for group in joined %}
+                    <div class="community">
+                        <p>{{ group.name }} Created by <em>{{ group.created_by_user.username }}</em></p>
+                        <a href="{{ url_for('community_chat', community=group.name) }}" class="btn btn-success">Visit</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="main">
+            <h2>Crypto Trends</h2>
+            <!-- Add your main content here -->
+        </div>
+        <div class="trends">
+            <h2>Trending communities</h2>
+            <div class="communities-trending">
+                {% for groups in globals %}
+                    <div class="community">
+                        <p>{{ groups.name }} <em>{{ groups.about }}</em> Created by {{ groups.created_by_user.username }}</p>
+                        <a href="{{ url_for('join_community', community_id=groups.id) }}" class="btn btn-success">Join</a>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

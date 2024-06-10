@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block app_content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='search.css') }}">
+<div class="search-result">
+    <h2>Search results ({{ count }})</h2>
+    {% if groups or users or coins %}
+        <div class="result-groups">
+            {% for group in groups %}
+                <div class="result-item">
+                    <p>Community: <strong>{{ group.name }}</strong></p>
+                    <p>Created by: <em>{{ group.created_by_user.username }}</em></p>
+                    <a href="{{ url_for('join_community', community_id=group.id) }}" class="btn btn-success">Join</a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="result-coins">
+            {% for coin in coins %}
+                <div class="result-item">
+                    <p>{{ coin.name }} is now valued at ${{ coin.price }}</p>
+                    <a href="{{ url_for('coin_listing') }}" class="btn btn-info">View other cryptocurrencies</a>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="result-users">
+            {% for user in users %}
+                <div class="result-item">
+                    <img class="avatar" src="{{ user.avatar(80) }}">
+                    <p>User: <a href="{{ url_for('user', username=user.username) }}">{{ user.username }}</a></p>
+                    {% if user.about_me %}
+                        <p>About: {{ user.about_me }}</p>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No results found for "{{ result }}" in communities, users, or cryptocurrencies.</p>
+    {% endif %}
+    <a class="btn btn-primary" href="{{ url_for('dashboard') }}">Back</a>
+</div>
+
+{% endblock%}

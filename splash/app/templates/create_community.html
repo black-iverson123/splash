@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+
+
+{% block app_content %}
+
+<div class='container'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <div class='col-md-4'>
+        <center>
+        <h1>{{ ('Create your community') }}</h1>
+        </center>
+        <form action="" method="post" enctype="multipart/form-data" novalidate>
+            {{ form.hidden_tag() }}
+            <p>
+                <p>{{ form.name.label}}</p>
+                <p> {{ form.name(class_="form-control", placeholder="community name")}}</p>
+                {% for error in  form.name.errors %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">{{ error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="close"></button>
+                </div>
+                {% endfor %}
+            </p>
+            <p>
+                {{ form.about.label(class="form-label") }}<br>
+                {{ form.about(cols=50, rows=4, class="form-control", placeholder="what is this community about") }}<br>
+                {% for error in  form.about.errors %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">{{ error }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="close"></button>
+                </div>
+                {% endfor %}
+            </p>
+            <p> {{ form.submit(class="btn btn-primary")}} </p>
+        </form>
+    </div>
+</div>
+{% endblock %}
