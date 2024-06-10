@@ -1,0 +1,16 @@
+Hey There, 
+
+For this project to work smoothly though its built around my previous project:
+
+Need the following:
+
+Python installed 
+Flask "pip install flask"
+Flask_WTF
+Flask_socketio
+Sqlalchemy
+cmc api key "platform can be changed doesn't really matter"
+
+
+Happy coding!!
+Black_Iverson.
